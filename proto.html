@@ -22,13 +22,13 @@
       };
       var o5 = new M('o5');
 
-
-      var new2 = function (func) {
-          var o = Object.create(func.prototype);
-          var k = func.call(o);
-          if (typeof k === 'object') {
+      // new运算符的原理
+      var new2 = function (func) { // func为构造函数
+          var o = Object.create(func.prototype); // 使用原型对象创建一个空对象
+          var k = func.call(o); // 使用刚创建的空对象作为上下文执行构造函数
+          if (typeof k === 'object') { // 若构造函数返回object，则返回构造函数返回值
               return k;
-          } else {
+          } else { // 若构造函数无返回值，则返回新创建的对象
               return o;
           }
       };
